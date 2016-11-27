@@ -8,4 +8,34 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../teensy-sisc-assembler-parent</relativePath>
 	</parent>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.antlr</groupId>
+			<artifactId>antlr4</artifactId>
+			<version>4.5.3</version>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.antlr</groupId>
+				<artifactId>antlr4-maven-plugin</artifactId>
+				<version>4.5.3</version>
+				<executions>
+					<execution>
+						<id>generate-antlr4</id>
+						<phase>generate-sources</phase>
+						<goals><goal>antlr4</goal></goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
