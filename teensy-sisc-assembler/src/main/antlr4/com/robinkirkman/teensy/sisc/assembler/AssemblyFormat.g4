@@ -5,7 +5,7 @@ file:
 ;
 
 namespace:
-	'.namespace' name=IDENTIFIER NEWLINE
+	'.namespace' name=IDENTIFIER ':' NEWLINE
 	namespace_section*
 ;
 
@@ -15,12 +15,12 @@ namespace_section:
 ;
 
 code_section:
-	'.code' (name=IDENTIFIER ( section_options )? )? NEWLINE
+	'.code' (name=IDENTIFIER ( section_options )? )? ':' NEWLINE
 	(code_line NEWLINE)*
 ;
 
 data_section:
-	'.data'  (name=IDENTIFIER ( section_options )? )? NEWLINE
+	'.data'  (name=IDENTIFIER ( section_options )? )? ':' NEWLINE
 	(data_line NEWLINE)*
 ;
 
