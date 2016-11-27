@@ -16,6 +16,7 @@ namespace_section:
 
 code_section:
 	'.code' (name=IDENTIFIER ( section_options )? )? NEWLINE
+	(code_line NEWLINE)*
 ;
 
 data_section:
@@ -37,8 +38,32 @@ data_line:
 |	data_line ',' expr
 ;
 
+code_line:
+	'SBN' expr ',' expr ( ',' expr )?
+;
+
 expr:
 	INTEGER
+|	IDENTIFIER
+|	'$' '(' expr_body ')'
+;
+
+expr_body:
+	expr_addsub
+;
+
+expr_addsub:
+	expr_muldiv ('+' | '-') expr_muldiv
+;
+
+expr_muldiv:
+	expr_atom ('*' | '/' | '%') expr_atom	
+;
+
+expr_atom:
+	INTEGER
+|	IDENTIFIER
+|	'(' expr_body ')'
 ;
 
 NEWLINE: ('\r') ? '\n'
